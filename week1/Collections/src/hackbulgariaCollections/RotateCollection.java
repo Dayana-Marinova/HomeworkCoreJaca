@@ -3,7 +3,7 @@ package hackbulgariaCollections;
 import java.util.LinkedList;
 
 public class RotateCollection {
-	public LinkedList<Integer> rotate(LinkedList<Integer> collection, int rotateStep){
+	public static LinkedList<Integer> rotate(LinkedList<Integer> collection, int rotateStep){
 		if (rotateStep >= 0){
 			for (int i = 0; i < rotateStep; i++){
 				Integer item = collection.get(collection.size() - 1);
@@ -11,7 +11,7 @@ public class RotateCollection {
 				collection.remove(collection.size()-1);
 			}
 		}
-		else if (rotateStep < 0){
+		else if (rotateStep <= 0){
 			for (int i = rotateStep; i <= 1; i++){
 				Integer item = collection.get(0);
 				collection.add(item);
@@ -31,9 +31,9 @@ public class RotateCollection {
 		list.add(3);
 		list.add(4);
 		list.add(5);
-		RotateCollection collection = new RotateCollection();
-		System.out.println(collection.rotate(list, 0));
-		System.out.println(collection.rotate(list, 2));
-		System.out.println(collection.rotate(list, -2));
+
+		System.out.println(rotate(list, 0));
+		System.out.println(rotate(list, 2));
+		System.out.println(rotate(list, -2));
 	}
 }

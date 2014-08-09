@@ -17,7 +17,7 @@ public class Sets {
 	
 	public static void main(String[] args) {
 		Set<Integer> A = new HashSet<Integer>();
-		A.addAll( Arrays.asList(1, 2, 3, 4, 5));
+		A.addAll( Arrays.asList(1, 2, 3, 4, 5, 6));
 		Set<Integer> B = new HashSet<Integer>();
 		B.addAll( Arrays.asList(4, 5, 6));
 		Set<Integer> C = new HashSet<Integer>();
