@@ -32,7 +32,7 @@ public final class Pair {
 		return pair2;
 	}
 	
-	public boolean equals(Pair one, Pair two){
+	public static boolean equalss(Pair one, Pair two){
 		if (one.pair1.equals(two.pair1) && one.pair2.equals(two.pair2)) {
             return true;
         } else {

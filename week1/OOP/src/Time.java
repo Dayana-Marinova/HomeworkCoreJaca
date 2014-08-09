@@ -16,7 +16,6 @@ public class Time {
 	}
 	
 	public Time(int day, int month, int year, int seconds, int minutes, int hours){
-		super();
 		this.day = day;
 		this.month = month;
 		this.year = year;

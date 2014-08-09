@@ -30,7 +30,7 @@ public class StackImpl implements Stack {
 
 	@Override
 	public Object top() {
-		return objects[size];
+		return objects[objects.length - 1];
 	}
 
 	@Override

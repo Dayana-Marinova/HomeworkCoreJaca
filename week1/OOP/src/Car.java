@@ -4,6 +4,12 @@ public class Car {
 	int age;
 	String color;
 	
+	public Car(){
+		this.model = null;
+		this.age = 0;
+		this.color = null;
+	}
+	
 	public Car(String model, int age, String color){
 		this.model = model;
 		this.age = age;
