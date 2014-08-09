@@ -8,20 +8,20 @@ import java.util.LinkedList;
 
 public class WordCountResult {
 	
-	private int lineCount;
-	private int wordCount;
-	private int charCount;
+	int lineCount;
+	static int wordCount;
+	static int charCount;
 	
 	public WordCountResult(){
 		this.lineCount = 0;
-		this.wordCount = 0;
-		this.charCount = 0;
+		WordCountResult.setWordCount(0);
+		WordCountResult.setCharCount(0);
 	}
 	
 	public WordCountResult(int line, int word, int chars){
 		this.lineCount = line;
-		this.wordCount = word;
-		this.charCount = chars;
+		WordCountResult.setWordCount(word);
+		WordCountResult.setCharCount(chars);
 	}
 	
 	public int getLine(){
@@ -29,11 +29,11 @@ public class WordCountResult {
 	}
 	
 	public int getWord(){
-		return this.wordCount;
+		return WordCountResult.getWordCount();
 	}
 	
 	public int getChar(){
-		return this.charCount;
+		return WordCountResult.getCharCount();
 	}
 	
 	public void setLine(int line){
@@ -41,37 +41,53 @@ public class WordCountResult {
 	}
 	
 	public void setWord(int word){
-		this.wordCount = word;
+		WordCountResult.setWordCount(word);
 	}
 	
 	public void setChar(int chars){
-		this.charCount = chars;
+		WordCountResult.setCharCount(chars);
 	}
 	
 	
-	public WordCountResult wordCount(Path path) throws IOException{
+	public static WordCountResult wordCount(Path path) throws IOException{
 		return new WordCountResult(LineCount(path), wordsCount(path), CharCount(path));
 	}
 
-	private int wordsCount(Path path) throws IOException {
+	public static int wordsCount(Path path) throws IOException{
 		LinkedList<String> lines = (LinkedList<String>) Files.readAllLines(path, Charset.defaultCharset());
 		for (String line : lines){
 			String[] words = line.split("\\s");
-			this.wordCount += words.length;
+			setWordCount(getWordCount() + words.length);
 		}
-		return this.wordCount;
+		return getWordCount();
 	}
 
-	private int LineCount(Path path) throws IOException {
+	public static int LineCount(Path path) throws IOException {
 		LinkedList<String> lines = (LinkedList<String>) Files.readAllLines(path, Charset.defaultCharset());
 		return lines.size();
 	}
 
-	private int CharCount(Path path) throws IOException {
+	public static int CharCount(Path path) throws IOException {
 		LinkedList<String> lines = (LinkedList<String>) Files.readAllLines(path, Charset.defaultCharset());
 		for(String line : lines){
-			this.charCount = line.length();
+			setCharCount(line.length());
 		}
-		return this.charCount;
+		return getCharCount();
+	}
+
+	public static int getCharCount() {
+		return charCount;
+	}
+
+	public static void setCharCount(int charCount) {
+		WordCountResult.charCount = charCount;
+	}
+
+	public static int getWordCount() {
+		return wordCount;
+	}
+
+	public static void setWordCount(int wordCount) {
+		WordCountResult.wordCount = wordCount;
 	}
 }

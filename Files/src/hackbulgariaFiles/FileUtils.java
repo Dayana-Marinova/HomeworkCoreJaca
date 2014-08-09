@@ -18,7 +18,7 @@ public class FileUtils {
 		return result;
 	}
 
-	private static String readFrom(Path path) throws IOException {
+	public static String readFrom(Path path) throws IOException {
 		byte[] bytes = Files.readAllBytes(path);
 		String result = new String(bytes, Charset.defaultCharset());
 		return result;
